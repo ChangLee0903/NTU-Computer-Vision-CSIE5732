@@ -1,2 +1,4 @@
-# NTU-CSIE5732-2020-Fall---Computer-Vision-
-Feel free to take it.
+Computer Vision Homework
+========================
+
+> 2020 fall NTU CSIE course, instructed by Dr. Fu.

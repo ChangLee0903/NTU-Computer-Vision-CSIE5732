@@ -1,6 +1,5 @@
 import numpy as np
 from PIL import Image
-import numpy as np
 
 # read lena.bmp
 sample_img = Image.open('lena.bmp')
@@ -92,7 +91,7 @@ output = np.zeros(bin_img.shape).astype(str)
 # compute and output Yokoi Connectivity Number ...
 for i in range(bin_img.shape[0]):
     for j in range(bin_img.shape[1]):
-        if bin_img[i][j] > 127:
+        if bin_img[i, j] > 127:
             output[i, j] = '%d ' % YokoiConnectivityNumber(bin_img, i, j)
         else:
             output[i, j] = '  '

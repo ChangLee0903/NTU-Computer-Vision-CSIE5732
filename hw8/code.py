@@ -13,6 +13,7 @@ if not os.path.exists('results'):
 
 # define function
 
+
 def gaussian_noise_transform(img, amp):
     return img + amp * np.random.normal(0, 1, img.shape)
 
@@ -95,7 +96,7 @@ PIL_image.save(
     'results/BoxFilter_s3_GaussianNoise_amp10_snr{:.4f}.bmp'.format(snr(sample_arr, bf_gn10_k3)))
 
 bf_gn30_k3 = box_filter(gn_30, 3)
-PIL_image = Image.fromarray(bf_gn10_k3.astype('uint8'))
+PIL_image = Image.fromarray(bf_gn30_k3.astype('uint8'))
 PIL_image.save(
     'results/BoxFilter_s3_GaussianNoise_amp30_snr{:.4f}.bmp'.format(snr(sample_arr, bf_gn30_k3)))
 
@@ -138,7 +139,7 @@ PIL_image.save(
     'results/MedianFilter_s3_GaussianNoise_amp10_snr{:.4f}.bmp'.format(snr(sample_arr, mf_gn10_k3)))
 
 mf_gn30_k3 = median_filter(gn_30, 3)
-PIL_image = Image.fromarray(mf_gn10_k3.astype('uint8'))
+PIL_image = Image.fromarray(mf_gn30_k3.astype('uint8'))
 PIL_image.save(
     'results/MedianFilter_s3_GaussianNoise_amp30_snr{:.4f}.bmp'.format(snr(sample_arr, mf_gn30_k3)))
 
@@ -183,42 +184,42 @@ kernel = [
     [2, -1], [2, 0], [2, 1]
 ]
 
-gn10_oc = closing(opening(gn_10, kernel), kernel)
+gn10_oc = opening_closing(gn_10, kernel)
 PIL_image = Image.fromarray(gn10_oc.astype('uint8'))
 PIL_image.save(
     'results/OpeningClosing_GaussianNoise_amp10_snr{:.4f}.bmp'.format(snr(sample_arr, gn10_oc)))
 
-gn30_oc = closing(opening(gn_30, kernel), kernel)
-PIL_image = Image.fromarray(gn10_oc.astype('uint8'))
+gn30_oc = opening_closing(gn_30, kernel)
+PIL_image = Image.fromarray(gn30_oc.astype('uint8'))
 PIL_image.save(
     'results/OpeningClosing_GaussianNoise_amp30_snr{:.4f}.bmp'.format(snr(sample_arr, gn30_oc)))
 
-sp01_oc = closing(opening(sp_01, kernel), kernel)
+sp01_oc = opening_closing(sp_01, kernel)
 PIL_image = Image.fromarray(sp01_oc.astype('uint8'))
 PIL_image.save(
     'results/OpeningClosing_SaltAndPepperNoise_thr01_snr{:.4f}.bmp'.format(snr(sample_arr, sp01_oc)))
 
-sp005_oc = closing(opening(sp_005, kernel), kernel)
+sp005_oc = opening_closing(sp_005, kernel)
 PIL_image = Image.fromarray(sp005_oc.astype('uint8'))
 PIL_image.save(
     'results/OpeningClosing_SaltAndPepperNoise_thr005_snr{:.4f}.bmp'.format(snr(sample_arr, sp005_oc)))
 
-gn10_co = opening(closing(gn_10, kernel), kernel)
+gn10_co = closing_opening(gn_10, kernel)
 PIL_image = Image.fromarray(gn10_co.astype('uint8'))
 PIL_image.save(
     'results/ClosingOpening_GaussianNoise_amp10_snr{:.4f}.bmp'.format(snr(sample_arr, gn10_co)))
 
-gn30_co = opening(closing(gn_30, kernel), kernel)
-PIL_image = Image.fromarray(gn10_co.astype('uint8'))
+gn30_co = closing_opening(gn_30, kernel)
+PIL_image = Image.fromarray(gn30_co.astype('uint8'))
 PIL_image.save(
     'results/ClosingOpening_GaussianNoise_amp30_snr{:.4f}.bmp'.format(snr(sample_arr, gn30_co)))
 
-sp01_co = opening(closing(sp_01, kernel), kernel)
+sp01_co = closing_opening(sp_01, kernel)
 PIL_image = Image.fromarray(sp01_co.astype('uint8'))
 PIL_image.save(
     'results/ClosingOpening_SaltAndPepperNoise_thr01_snr{:.4f}.bmp'.format(snr(sample_arr, sp01_co)))
 
-sp005_co = opening(closing(sp_005, kernel), kernel)
+sp005_co = closing_opening(sp_005, kernel)
 PIL_image = Image.fromarray(sp005_co.astype('uint8'))
 PIL_image.save(
     'results/ClosingOpening_SaltAndPepperNoise_thr005_snr{:.4f}.bmp'.format(snr(sample_arr, sp005_co)))

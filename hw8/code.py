@@ -1,7 +1,7 @@
 import numpy as np
 from PIL import Image
 import os
-from utils import opening, closing
+from utils import opening_closing, closing_opening
 
 # read lena.bmp
 sample_img = Image.open('lena.bmp')
